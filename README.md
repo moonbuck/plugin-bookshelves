@@ -1,6 +1,8 @@
 # plugin-bookshelves
 A plugin for [Micro.blog](https://micro.blog "Micro.blog") that creates a page displaying multiple bookshelves.
 
+Once installed, the generated page will be found at `[SCHEME]://[HOSTNAME]/bookshelf/`.
+
 If you leave the parameters untouched, the plugin generates a section for every bookshelf with headers displaying the less-than-stellar bookshelf key.
 
 ![Bookshelf Key Headers](https://raw.githubusercontent.com/moonbuck/plugin-bookshelves/main/bookshelf_keys.jpeg)
@@ -32,7 +34,7 @@ You can play around with the pixel width used in cover image requests. If you do
 
 The page template lives at `layouts/bookshelf/single.html`. 
 
-```HTML
+```Hugo
 {{ define "main" }}
 <section id="wrapper">
 <article class="h-entry post">
@@ -80,7 +82,7 @@ The page template lives at `layouts/bookshelf/single.html`.
 
 The partial it uses for each book lives at `layouts/partials/book.html`. It may be useful elsewhere if you feed it a book from a bookshelf.
 
-```HTML
+```Hugo
 {{ $cover_width := 100 }}
 {{ with site.Params.bookshelves_cover_width }}
 {{ $cover_width = . | int }}
@@ -139,4 +141,4 @@ The file living at `content/bookshelf.md` specifies the front matter for the pag
 }
 ```
 
-Leave the `type` alone (as that is what points it to `layouts/bookshelf/single.html`). You can play with the `title` and `description` values. These set the values I would expect your theme to draw from when constructing the page `<head>`. The `menu` creates a menu item to include the page in your navigation. Leave the `url` alone (this is how the link’s target is derived). You can play around with the other values. You can adjust the value of `weight` to slide the menu item up or down your list of navigation items.
+Leave the `type` alone (as that is what points it to `layouts/bookshelf/single.html`). You can play with the `title` and `description` values. These set the values I would expect your theme to draw from when constructing the page `<head>`. The `menu` creates a menu item to include the page in your navigation. Leave the `url` alone (this is how the link’s target is derived). You can play around with the other values. You can adjust the value of `weight` to slide the menu item up or down your list of navigation items. You can remove the `menu` entry entirely if you do not want the page to show up in your navigation menu.

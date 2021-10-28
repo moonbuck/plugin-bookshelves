@@ -1,0 +1,40 @@
+{{ define "main" }}
+<section id="wrapper bookshelves-wrapper">
+<article class="h-entry post">
+<section class="e-content post-body">
+
+{{ with site.Params.bookshelves_data_json }}
+  {{ with transform.Unmarshal . }}
+    {{ range $bookshelf, $description := . }}
+    
+<p class="bookshelf-description">{{ $description }}</p>
+
+      {{ range index site.Data.bookshelves $bookshelf }}
+
+{{ partial "book.html" . }}
+
+      {{ end }}
+    {{ end }}
+  {{ end }}
+
+{{ else }}
+  
+ {{ range $bookshelf_key, $bookshelf := site.Data.bookshelves }}
+ 
+<p class="bookshelf-description">{{ $bookshelf_key }}</p>
+ 
+  {{ range $bookshelf }}
+  
+{{ partial "book.html" . }}  
+  
+  {{ end }}
+
+ {{ end }}
+
+{{ end }}
+
+</section>
+</article>
+</section>
+
+{{ end }}

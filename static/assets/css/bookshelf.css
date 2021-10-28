@@ -1,0 +1,13 @@
+p.bookshelf-book {
+  clear: both;
+}
+
+img.bookshelf-book-cover {
+  max-width: 50px;
+  border-radius:0px;
+  padding-right: 5px;
+}
+
+p.bookshelf-description {
+  font-style: italic;
+}

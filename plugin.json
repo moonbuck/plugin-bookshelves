@@ -1,0 +1,20 @@
+{
+    "version": "1.0.0",
+    "title": "Moondeer's Bookshelves",
+    "description": "Creates a page for displaying all your Micro.blog bookshelves.",
+    "includes": [
+        "/assets/css/bookshelf.css"
+      ],
+      "fields": [
+        {
+          "field": "params.bookshelves_data_json",
+          "label": "Bookshelves Data (JSON)",
+          "placeholder": "{ \"currentlyreading\": \"Books I'm reading\", \"finishedreading\": \"Books I've finished\" }"
+        },
+        {
+          "field": "params.bookshelves_cover_width",
+          "label": "Cover Width (px)",
+          "placeholder": "100"
+        }
+      ]
+    }

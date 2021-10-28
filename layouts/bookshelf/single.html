@@ -7,13 +7,15 @@
   {{ with transform.Unmarshal . }}
     {{ range $bookshelf, $description := . }}
     
-<p class="bookshelf-description">{{ $description }}</p>
-
+<p class="bookshelf-description">{{ $description | markdownify }}</p>
+<div class="bookshelf-books">
       {{ range index site.Data.bookshelves $bookshelf }}
 
 {{ partial "book.html" . }}
 
       {{ end }}
+</div>
+
     {{ end }}
   {{ end }}
 
@@ -21,13 +23,14 @@
   
  {{ range $bookshelf_key, $bookshelf := site.Data.bookshelves }}
  
-<p class="bookshelf-description">{{ $bookshelf_key }}</p>
- 
+<h1 class="bookshelf-key">{{ $bookshelf_key }}</h1>
+<div class="bookshelf-books">
   {{ range $bookshelf }}
   
 {{ partial "book.html" . }}  
   
   {{ end }}
+</div>
 
  {{ end }}
 

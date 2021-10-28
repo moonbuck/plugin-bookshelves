@@ -2,15 +2,19 @@
 {{ with site.Params.bookshelves_cover_width }}
 {{ $cover_width = . | int }}
 {{ end }}
-<p class="bookshelf-book">
-  <a href="https://micro.blog/books/{{ .isbn }}">
+<div class="bookshelf-book">
+  <a 
+    class="bookshelf-book-link" 
+    href="https://micro.blog/books/{{ .isbn }}">
     <img 
       class="bookshelf-book-cover"
       src="https://micro.blog/photos/{{ $cover_width }}x/{{ .cover_url }}"
       align="left" />
   </a>
+  <div>
   <span class="bookshelf-book-title">{{ .title }}</span>
 {{ with .author }}
   <br /><span class="bookshelf-book-author">by {{.}}</span>
 {{ end }}
- </p>
+  </div>
+ </div>

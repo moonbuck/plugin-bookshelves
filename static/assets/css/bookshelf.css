@@ -1,13 +1,12 @@
-p.bookshelf-book {
-  clear: both;
+div.bookshelf-books {
+  margin: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-img.bookshelf-book-cover {
-  max-width: 50px;
-  border-radius:0px;
-  padding-right: 5px;
-}
-
-p.bookshelf-description {
-  font-style: italic;
+div.bookshelf-book {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }

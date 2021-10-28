@@ -32,7 +32,7 @@ You can play around with the pixel width used in cover image requests. If you do
 
 The page template lives at `layouts/bookshelf/single.html`. 
 
-```Hugo
+```HTML
 {{ define "main" }}
 <section id="wrapper">
 <article class="h-entry post">
@@ -80,7 +80,7 @@ The page template lives at `layouts/bookshelf/single.html`.
 
 The partial it uses for each book lives at `layouts/partials/book.html`. It may be useful elsewhere if you feed it a book from a bookshelf.
 
-```Hugo
+```HTML
 {{ $cover_width := 100 }}
 {{ with site.Params.bookshelves_cover_width }}
 {{ $cover_width = . | int }}

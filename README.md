@@ -26,6 +26,8 @@ Then in place of those headers the plugin will generate a paragraph introducting
 
 ![Bookshelf Descriptions](bookshelf_descriptions.jpeg)
 
-You can play around with the pixel width to request for the cover images. If you do, there is something you should know:
+The HTML elements are all appropriately classed for custom CSS, etc., etc.
+
+You can play around with the pixel width used in cover image requests. If you do, there is something you should know:
 
 **when you load the plugin parameter page, any previously set JSON object will be mangled, so you will want to keep it copied somewhere else and paste that little f$&ker back into the parameter field *EVERY* time you feel like actually hitting that button to update settings.**

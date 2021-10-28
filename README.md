@@ -8,7 +8,7 @@ If you leave the parameters untouched, the plugin generates a section for every 
 You can take these silly, lowercase, spaceless values and use them as keys for descriptions within a JSON object kinda like…
 
 ```json
-`{
+{
   "currentlyreading": "*Books I am somewhat in the process of reading*",
   "finishedreading": "*Books I've managed to get myself to read*",
   "wanttoread": "*Books that gaze at me judingly from beneath the television, where they currently live, for having yet to crack their spine (f$&kers).*",

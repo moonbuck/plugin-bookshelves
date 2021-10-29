@@ -28,6 +28,8 @@ Then, instead of listing all of your bookshelves, the plugin will list only the 
 
 ![Bookshelf Descriptions](https://raw.githubusercontent.com/moonbuck/plugin-bookshelves/main/bookshelf_descriptions.jpeg)
 
+In addition to giving pretty descriptions, the choice of which bookshelves to include on the page hinges entirely upon which names are found in the supplied JSON object. This means that (until I implement better handling for massive book lists) a bookshelf may be left out simply by leaving out its entry in the JSON object.
+
 You can play around with the pixel width used in cover image requests. If you do, there is something you should know:
 
 **when you load the plugin parameter page, any previously set JSON object will be mangled, so you will want to keep it copied somewhere else and paste that little f$&ker back into the parameter field *EVERY* time you feel like actually hitting that button to update settings.**

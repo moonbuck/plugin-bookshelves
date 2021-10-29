@@ -24,7 +24,7 @@ So copy that JSON, head to the plugin parameters, and paste it in kinda like…
 
 ![Plugin Parameters](https://raw.githubusercontent.com/moonbuck/plugin-bookshelves/main/plugin_parameters.jpeg)
 
-Then in place of those headers the plugin will generate a paragraph introducting your bookshelf with the specified description, kinda like…
+Then, instead of listing all of your bookshelves, the plugin will list only the bookshelves included in the JSON object … and in place of those headers the plugin will generate a paragraph introducing your bookshelf with the specified description, kinda like…
 
 ![Bookshelf Descriptions](https://raw.githubusercontent.com/moonbuck/plugin-bookshelves/main/bookshelf_descriptions.jpeg)
 
@@ -34,7 +34,7 @@ You can play around with the pixel width used in cover image requests. If you do
 
 The page template lives at `layouts/bookshelf/single.html`. 
 
-```Hugo
+```html
 {{ define "main" }}
 <section id="wrapper">
 <article class="h-entry post">
@@ -82,7 +82,7 @@ The page template lives at `layouts/bookshelf/single.html`.
 
 The partial it uses for each book lives at `layouts/partials/book.html`. It may be useful elsewhere if you feed it a book from a bookshelf.
 
-```Hugo
+```html
 {{ $cover_width := 100 }}
 {{ with site.Params.bookshelves_cover_width }}
 {{ $cover_width = . | int }}

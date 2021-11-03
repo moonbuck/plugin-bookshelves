@@ -24,6 +24,8 @@ So copy that JSON, head to the plugin parameters, and paste it in kinda like…
 
 ![Plugin Parameters](https://raw.githubusercontent.com/moonbuck/plugin-bookshelves/main/plugin_parameters.jpeg)
 
+Or, starting with `version 2`, you can save that JSON object directly in a template under `data/plugin_bookshelves/bookshelves_data.json`.
+
 Then, instead of listing all of your bookshelves, the plugin will list only the bookshelves included in the JSON object … and in place of those headers the plugin will generate a paragraph introducing your bookshelf with the specified description, kinda like…
 
 ![Bookshelf Descriptions](https://raw.githubusercontent.com/moonbuck/plugin-bookshelves/main/bookshelf_descriptions.jpeg)

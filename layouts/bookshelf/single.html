@@ -3,20 +3,31 @@
 <article class="h-entry post">
 <section class="e-content post-body">
 
-{{ with site.Params.bookshelves_data_json }}
-  {{ with transform.Unmarshal . }}
-    {{ range $bookshelf, $description := . }}
+{{ $bookshelves_data := false }}
+{{ with site.Data.plugin_bookshelves.bookshelves_data }}
+{{ $bookshelves_data = . }}
+{{ else }}
+{{ with site.Params.bookshelves_data }}{{ $bookshelves_data = . }}{{ end }}
+{{ end }}
+
+{{ if (and $bookshelves_data (not ($bookshelves_data | reflect.IsMap))) }}
+{{ with transform.Unmarshal $bookshelves_data }}
+{{ $bookshelves_data = . }}
+{{ end }}
+{{ end }}
+
+{{ with $bookshelves_data }}
+  {{ range $bookshelf, $description := . }}
     
 <p class="bookshelf-description">{{ $description | markdownify }}</p>
 <div class="bookshelf-books">
-      {{ range index site.Data.bookshelves $bookshelf }}
+    {{ range index site.Data.bookshelves $bookshelf }}
 
 {{ partial "book.html" . }}
 
-      {{ end }}
+    {{ end }}
 </div>
 
-    {{ end }}
   {{ end }}
 
 {{ else }}

@@ -2,7 +2,7 @@
 {{ range $bookshelf, $description := . }}
     
 <p class="bookshelf-description">{{ $description | markdownify }}</p>
-<div class="bookshelf-books {{ cond (and site.Params.bookshelves_initial_view (eq "grid" site.Params.bookshelves_initial_view)) "grid" "list" }}-view">
+<div class="bookshelf-books {{ if (and site.Params.bookshelves_initial_view (eq "grid" site.Params.bookshelves_initial_view)) }}grid{{ else }}list{{ end }}-view">
     {{ range index site.Data.bookshelves $bookshelf }}
 
 {{ partial "book.html" . }}

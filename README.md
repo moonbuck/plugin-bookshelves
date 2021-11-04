@@ -1,4 +1,4 @@
-# plugin-bookshelves (A README Experience)
+# plugin-bookshelves
 A plugin for [Micro.blog](https://micro.blog "Micro.blog") that creates a page displaying multiple bookshelves.
 
 ***New in version 3*** List and grid views, beeeches. The default view is `list`. You can set the parameter value to `grid` to start out with the grid view instead.

@@ -1,8 +1,16 @@
 {{ define "main" }}
+{{/* Wrap the content */}}
 <section id="wrapper">
 <article class="h-entry post">
 <section class="e-content post-body">
 
+{{/* Create the list-grid layout buttons */}}
+<div id="bookshelves-button-container-wrapper"><div id="bookshelves-button-container">
+<button id="list-view" class="button{{ if not (and site.Params.bookshelves_initial_view (eq "grid" site.Params.bookshelves_initial_view)) }} active{{ end }}" onclick="listView()"><i class="fas fa-list"></i></button> 
+<button id="grid-view" class="button{{ if (and site.Params.bookshelves_initial_view (eq "grid" site.Params.bookshelves_initial_view)) }} active{{ end }}" onclick="gridView()"><i class="fas fa-th"></i></button>
+</div></div>
+
+{{/* Check for bookshelves data */}}
 {{ $bookshelves_data := false }}
 {{ with site.Data.plugin_bookshelves.bookshelves_data }}
 {{ $bookshelves_data = . }}
@@ -10,6 +18,7 @@
 {{ with site.Params.bookshelves_data }}{{ $bookshelves_data = . }}{{ end }}
 {{ end }}
 
+{{/* Unmarshall the data if we found it in string form */}}
 {{ if (and $bookshelves_data (not ($bookshelves_data | reflect.IsMap))) }}
 {{ with transform.Unmarshal $bookshelves_data }}
 {{ $bookshelves_data = . }}
@@ -17,33 +26,12 @@
 {{ end }}
 
 {{ with $bookshelves_data }}
-  {{ range $bookshelf, $description := . }}
-    
-<p class="bookshelf-description">{{ $description | markdownify }}</p>
-<div class="bookshelf-books">
-    {{ range index site.Data.bookshelves $bookshelf }}
 
-{{ partial "book.html" . }}
-
-    {{ end }}
-</div>
-
-  {{ end }}
+{{ partial "bookshelves-from-data.html" . }}
 
 {{ else }}
   
- {{ range $bookshelf_key, $bookshelf := site.Data.bookshelves }}
- 
-<h1 class="bookshelf-key">{{ $bookshelf_key }}</h1>
-<div class="bookshelf-books">
-  {{ range $bookshelf }}
-  
-{{ partial "book.html" . }}  
-  
-  {{ end }}
-</div>
-
- {{ end }}
+{{ partial "bookshelves-inferred.html" . }}
 
 {{ end }}
 

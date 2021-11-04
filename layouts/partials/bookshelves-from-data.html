@@ -1,0 +1,13 @@
+{{/* Generates content from user-provided bookshelves data */}}
+{{ range $bookshelf, $description := . }}
+    
+<p class="bookshelf-description">{{ $description | markdownify }}</p>
+<div class="bookshelf-books list-view">
+    {{ range index site.Data.bookshelves $bookshelf }}
+
+{{ partial "book.html" . }}
+
+    {{ end }}
+</div>
+
+{{ end }}

@@ -1,7 +1,4 @@
-{{ $cover_width := 100 }}
-{{ with site.Params.bookshelves_cover_width }}
-{{ $cover_width = . | int }}
-{{ end }}
+{{ $cover_width := site.Params.bookshelves_cover_width | default 100 | int }}
 <div class="bookshelf-book">
   <a 
     class="bookshelf-book-link" 
@@ -11,10 +8,10 @@
       src="https://micro.blog/photos/{{ $cover_width }}x/{{ .cover_url }}"
       align="left" />
   </a>
-  <div>
+  <div class="bookshelf-book-title-author">
   <span class="bookshelf-book-title">{{ .title }}</span>
 {{ with .author }}
   <br /><span class="bookshelf-book-author">by {{.}}</span>
 {{ end }}
   </div>
- </div>
+ </div> 

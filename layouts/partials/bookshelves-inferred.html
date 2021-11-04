@@ -2,7 +2,7 @@
 {{ range $bookshelf_key, $bookshelf := site.Data.bookshelves }}
  
 <h1 class="bookshelf-key">{{ $bookshelf_key }}</h1>
-<div class="bookshelf-books {{ cond (and site.Params.bookshelves_initial_view (eq "grid" site.Params.bookshelves_initial_view)) "grid" "list" }}-view">
+<div class="bookshelf-books {{ if (and site.Params.bookshelves_initial_view (eq "grid" site.Params.bookshelves_initial_view)) }}grid{{ else }}list{{ end }}-view">
   {{ range $bookshelf }}
   
 {{ partial "book.html" . }}  

@@ -114,3 +114,8 @@ div#bookshelves-button-container > button.button.active {
   background-color: #1E2025;
   color: #FFF;
   }
+  
+/* Button Text */
+div#bookshelves-button-container > button.button > span.button-text {
+  display: none;
+}

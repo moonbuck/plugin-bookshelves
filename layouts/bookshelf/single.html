@@ -6,8 +6,8 @@
 
 {{/* Create the list-grid layout buttons */}}
 <div id="bookshelves-button-container-wrapper"><div id="bookshelves-button-container">
-<button id="list-view" class="button{{ if not (and site.Params.bookshelves_initial_view (eq "grid" site.Params.bookshelves_initial_view)) }} active{{ end }}" onclick="listView()"><i class="fas fa-list"></i><span class="button-text"> List</span></button> 
-<button id="grid-view" class="button{{ if (and site.Params.bookshelves_initial_view (eq "grid" site.Params.bookshelves_initial_view)) }} active{{ end }}" onclick="gridView()"><i class="fas fa-th"></i><span class="button-text"> Grid</span></button>
+<button id="list-view" class="button{{ if not (and site.Params.bookshelves_initial_view (eq "grid" site.Params.bookshelves_initial_view)) }} active{{ end }}" onclick="listView()"><i class="fad fa-th-list"></i><span class="button-text"> List</span></button> 
+<button id="grid-view" class="button{{ if (and site.Params.bookshelves_initial_view (eq "grid" site.Params.bookshelves_initial_view)) }} active{{ end }}" onclick="gridView()"><i class="fad fa-th-large"></i><span class="button-text"> Grid</span></button>
 </div></div>
 
 {{/* Check for bookshelves data */}}

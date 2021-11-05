@@ -116,6 +116,6 @@ div#bookshelves-button-container > button.button.active {
   }
   
 /* Button Text */
-div#bookshelves-button-container > button.button > span.button-text {
+/*div#bookshelves-button-container > button.button > span.button-text {
   display: none;
-}
+}*/

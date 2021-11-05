@@ -1,4 +1,4 @@
-{{ $cover_width := site.Params.bookshelves_cover_width | default 100 | int }}
+{{- $cover_width := site.Params.bookshelves_cover_width | default 100 | int }}
 <div class="bookshelf-book">
   <a 
     class="bookshelf-book-link" 
@@ -10,8 +10,8 @@
   </a>
   <div class="bookshelf-book-title-author">
   <span class="bookshelf-book-title">{{ .title }}</span>
-{{ with .author }}
+{{- with .author }}
   <br /><span class="bookshelf-book-author">by {{.}}</span>
-{{ end }}
+{{- end }}
   </div>
  </div> 

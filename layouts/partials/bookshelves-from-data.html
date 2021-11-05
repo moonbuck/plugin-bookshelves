@@ -1,37 +1,37 @@
-{{/* Generates content from user-provided bookshelves data */}}
+{{- /* Generates content from user-provided bookshelves data */}}
 
-{{/* Check for an array objects under 'bookshelves' */}}
-{{ with .bookshelves }}
+{{- /* Check for an array objects under 'bookshelves' */}}
+{{- with .bookshelves }}
 
-{{ range . }}
+{{- range . }}
 
-{{ if (and .key .description) }}
+{{- if (and .key .description) }}
 <p class="bookshelf-description">{{ .description | markdownify }}</p>
 <div class="bookshelf-books {{ if (and site.Params.bookshelves_initial_view (eq "grid" site.Params.bookshelves_initial_view)) }}grid-view{{ else }}list-view{{ end }}">
-    {{ range index site.Data.bookshelves .key }}
+    {{- range index site.Data.bookshelves .key }}
 
-{{ partial "book.html" . }}
+{{- partial "book.html" . }}
 
-    {{ end }}
+    {{- end }}
 </div>
 
-{{ end }}
+{{- end }}
 
-{{ end }}
+{{- end }}
 
-{{/* Otherwise, assume the keys are the bookshelf keys and the values are their descriptions */}}
-{{ else }}
-{{ range $bookshelf, $description := . }}
+{{- /* Otherwise, assume the keys are the bookshelf keys and the values are their descriptions */}}
+{{- else }}
+{{- range $bookshelf, $description := . }}
     
 <p class="bookshelf-description">{{ $description | markdownify }}</p>
 <div class="bookshelf-books {{ if (and site.Params.bookshelves_initial_view (eq "grid" site.Params.bookshelves_initial_view)) }}grid-view{{ else }}list-view{{ end }}">
-    {{ range index site.Data.bookshelves $bookshelf }}
+    {{- range index site.Data.bookshelves $bookshelf }}
 
-{{ partial "book.html" . }}
+{{- partial "book.html" . }}
 
-    {{ end }}
+    {{- end }}
 </div>
 
-{{ end }}
+{{- end }}
 
-{{ end }}
+{{- end }}

@@ -1,42 +1,42 @@
-{{ define "main" }}
-{{/* Wrap the content */}}
+{{- define "main" }}
+{{- /* Wrap the content */}}
 <section id="wrapper">
 <article class="h-entry post">
 <section class="e-content post-body">
 
-{{/* Create the list-grid layout buttons */}}
+{{- /* Create the list-grid layout buttons */}}
 <div id="bookshelves-button-container-wrapper"><div id="bookshelves-button-container">
-<button id="list-view" class="button{{ if not (and site.Params.bookshelves_initial_view (eq "grid" site.Params.bookshelves_initial_view)) }} active{{ end }}" onclick="listView()"><i class="fad fa-th-list"></i><span class="button-text"> List</span></button> 
-<button id="grid-view" class="button{{ if (and site.Params.bookshelves_initial_view (eq "grid" site.Params.bookshelves_initial_view)) }} active{{ end }}" onclick="gridView()"><i class="fad fa-th-large"></i><span class="button-text"> Grid</span></button>
+<button id="list-view" class="button{{ if not (and site.Params.bookshelves_initial_view (eq "grid" site.Params.bookshelves_initial_view)) }} active{{ end }}" onclick="listView()"><i class="fas fa-list"></i><span class="button-text"> List</span></button> 
+<button id="grid-view" class="button{{ if (and site.Params.bookshelves_initial_view (eq "grid" site.Params.bookshelves_initial_view)) }} active{{ end }}" onclick="gridView()"><i class="fas fa-th"></i><span class="button-text"> Grid</span></button>
 </div></div>
 
-{{/* Check for bookshelves data */}}
-{{ $bookshelves_data := false }}
-{{ with site.Data.plugin_bookshelves.bookshelves_data }}
-{{ $bookshelves_data = . }}
-{{ else }}
-{{ with site.Params.bookshelves_data }}{{ $bookshelves_data = . }}{{ end }}
-{{ end }}
+{{- /* Check for bookshelves data */}}
+{{- $bookshelves_data := false }}
+{{- with site.Data.plugin_bookshelves.bookshelves_data }}
+{{- $bookshelves_data = . }}
+{{- else }}
+{{- with site.Params.bookshelves_data }}{{ $bookshelves_data = . }}{{ end }}
+{{- end }}
 
-{{/* Unmarshall the data if we found it in string form */}}
-{{ if (and $bookshelves_data (not ($bookshelves_data | reflect.IsMap))) }}
-{{ with transform.Unmarshal $bookshelves_data }}
-{{ $bookshelves_data = . }}
-{{ end }}
-{{ end }}
+{{- /* Unmarshall the data if we found it in string form */}}
+{{- if (and $bookshelves_data (not ($bookshelves_data | reflect.IsMap))) }}
+{{- with transform.Unmarshal $bookshelves_data }}
+{{- $bookshelves_data = . }}
+{{- end }}
+{{- end }}
 
-{{ with $bookshelves_data }}
+{{- with $bookshelves_data }}
 
-{{ partial "bookshelves-from-data.html" . }}
+{{- partial "bookshelves-from-data.html" . }}
 
-{{ else }}
+{{- else }}
   
-{{ partial "bookshelves-inferred.html" . }}
+{{- partial "bookshelves-inferred.html" . }}
 
-{{ end }}
+{{- end }}
 
 </section>
 </article>
 </section>
 
-{{ end }}
+{{- end }}

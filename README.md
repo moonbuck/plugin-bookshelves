@@ -1,6 +1,27 @@
 # plugin-bookshelves
 A plugin for [Micro.blog](https://micro.blog "Micro.blog") that creates a page displaying multiple bookshelves.
 
+***New in version 4 (and yes … version 3 was like three hours ago)*** Data can be stored as an array of objects under the `bookshelves` key so that the order in which they are displayed can be controlled. Take my file as I had it (found a bit lower down), apply the array format, and it looks like this:
+
+{ "bookshelves": [
+  {
+    "key": "currentlyreading",
+    "description": "*Books I am somewhat in the process of reading*"
+  },
+  {
+    "key": "finishedreading",
+    "description": "*Books I've managed to get myself to read*"
+  },
+  {
+    "key": "wanttoread",
+    "description": "*Books that gaze at me judingly from beneath the television, where they currently live, for having yet to crack their spine (f$&kers).*"
+  },
+  {
+    "key": "didwanttoread",
+    "description": "*Books whose gaze of judgement I've kinda become okay with as my interest in reading them has waned.*"
+  }
+]}
+
 ***New in version 3*** List and grid views, beeeches. The default view is `list`. You can set the parameter value to `grid` to start out with the grid view instead.
 
 ![List View](https://raw.githubusercontent.com/moonbuck/plugin-bookshelves/main/list_view.jpeg) ![Grid View](https://raw.githubusercontent.com/moonbuck/plugin-bookshelves/main/grid_view.jpeg)

@@ -12,7 +12,7 @@
 
 {{- /* Check for bookshelves data */}}
 {{- $bookshelves_data := false }}
-{{- with site.Data.plugin_bookshelves.bookshelves_data }}
+{{- with (site.Data.plugin_bookshelves_data | default site.Data.plugin_bookshelves.bookshelves_data) }}
 {{- $bookshelves_data = . }}
 {{- else }}
 {{- with site.Params.bookshelves_data }}{{ $bookshelves_data = . }}{{ end }}

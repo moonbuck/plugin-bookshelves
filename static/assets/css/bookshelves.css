@@ -70,9 +70,9 @@ div#bookshelves-button-container-wrapper {
   display: flex;
   justify-content: center;
   gap: 0;
- padding: 0;
- margin: 0;
- align-content: stretch;
+  padding: 0;
+  margin: 0;
+  align-content: stretch;
 }
 
 div#bookshelves-button-container {
@@ -80,7 +80,7 @@ div#bookshelves-button-container {
   outline: none;
   padding: 0;
   margin:0;
-  background-color: #FFF;
+  background-color: #1E2025; /* Match active color to prevent vertical bar on hover */
   border-radius: 1em;
   color: #1E2025;
   font-size: 0.8rem;
@@ -90,6 +90,7 @@ div#bookshelves-button-container {
 div#bookshelves-button-container > button.button {
   padding: 0 1em;
   margin: 0;
+  border-width: 0;
   background-color: #FFF;
   color: #1E2025;
   height: 100%;
@@ -98,10 +99,12 @@ div#bookshelves-button-container > button.button {
   
 div#bookshelves-button-container > button#list-view {
   border-radius: 1em 0 0 1em;
+  padding-right: 1em;
 }
 
 div#bookshelves-button-container > button#grid-view {
-    border-radius: 0 1em 1em 0;
+  border-radius: 0 1em 1em 0;
+  padding-left: 1em;
 }
 
 /* Change this hover color to match your theme color */
@@ -113,9 +116,25 @@ div#bookshelves-button-container > button.button:hover {
 div#bookshelves-button-container > button.button.active {
   background-color: #1E2025;
   color: #FFF;
-  }
+}
   
 /* Button Text */
 /*div#bookshelves-button-container > button.button > span.button-text {
   display: none;
 }*/
+
+/* Font Awesome Icons */
+
+svg:not(:root).svg-inline--fa{
+  overflow:visible;
+  -webkit-box-sizing:content-box;
+  box-sizing:content-box
+}
+
+.svg-inline--fa{
+  display:inline-block;
+  display:var(--fa-display,inline-block);
+  height:1em;
+  overflow:visible;
+  vertical-align:-.125em
+}

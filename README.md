@@ -26,13 +26,13 @@ A plugin for [Micro.blog](https://micro.blog "Micro.blog") that creates a page d
 
 ***New in version 3*** List and grid views, beeeches. The default view is `list`. You can set the parameter value to `grid` to start out with the grid view instead.
 
-![List View](https://raw.githubusercontent.com/moonbuck/plugin-bookshelves/main/list_view.jpeg) ![Grid View](https://raw.githubusercontent.com/moonbuck/plugin-bookshelves/main/grid_view.jpeg)
+![List View](https://raw.githubusercontent.com/moonbuck/plugin-bookshelves/main/images/list_view.jpeg) ![Grid View](https://raw.githubusercontent.com/moonbuck/plugin-bookshelves/main/images/grid_view.jpeg)
 
 Once installed, the generated page will be found at `[SCHEME]://[HOSTNAME]/bookshelf/`.
 
 If you leave the parameters untouched, the plugin generates a section for every bookshelf with headers displaying the less-than-stellar bookshelf key.
 
-![Bookshelf Key Headers](https://raw.githubusercontent.com/moonbuck/plugin-bookshelves/main/bookshelf_keys.jpeg)
+![Bookshelf Key Headers](https://raw.githubusercontent.com/moonbuck/plugin-bookshelves/main/images/bookshelf_keys.jpeg)
 
 You can take these silly, lowercase, spaceless values and use them as keys for descriptions within a JSON object kinda like…
 
@@ -49,13 +49,13 @@ Notice the descriptions will be `markdownified` so you can include markdown.
  
 So copy that JSON, head to the plugin parameters, and paste it in…
 
-![Plugin Parameters](https://raw.githubusercontent.com/moonbuck/plugin-bookshelves/main/plugin_parameters.jpeg)
+![Plugin Parameters](https://raw.githubusercontent.com/moonbuck/plugin-bookshelves/main/images/plugin_parameters.jpeg)
 
 Or, starting with `version 2`, you can save that JSON object directly in a template under `data/plugin_bookshelves/bookshelves_data.json`. I highly recommend this method … and if you save it in your theme the data will persist between plugin updates.
 
 Then, instead of listing all of your bookshelves, the plugin will list only the bookshelves included in the JSON object … and in place of those headers the plugin will generate a paragraph introducing your bookshelf with the specified description, kinda like…
 
-![Bookshelf Descriptions](https://raw.githubusercontent.com/moonbuck/plugin-bookshelves/main/bookshelf_descriptions.jpeg)
+![Bookshelf Descriptions](https://raw.githubusercontent.com/moonbuck/plugin-bookshelves/main/images/bookshelf_descriptions.jpeg)
 
 You can play around with the pixel width used in cover image requests. If you do, there is something you should know if you are using the plugin parameter to store your bookshelves data:
 

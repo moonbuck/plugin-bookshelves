@@ -3,7 +3,7 @@
     "title": "Moondeer's Bookshelves",
     "description": "Creates a page for displaying all your Micro.blog bookshelves.",
     "includes": [
-      "/assets/css/bookshelves.css",
+        "/assets/css/bookshelves.css",
         "/assets/js/bookshelves.js"
       ],
       "fields": [

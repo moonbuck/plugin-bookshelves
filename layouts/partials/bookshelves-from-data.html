@@ -1,5 +1,7 @@
 {{- /* Generates content from user-provided bookshelves data */}}
 
+{{- $initial_view := site.Data.plugin_bookshelves_data.InitialView | default site.Params.bookshelves_initial_view -}}
+
 {{- /* Check for an array objects under 'bookshelves' */}}
 {{- with .bookshelves }}
 
@@ -7,7 +9,7 @@
 
 {{- if (and .key .description) }}
 <p class="bookshelf-description">{{ .description | markdownify }}</p>
-<div class="bookshelf-books {{ if (and site.Params.bookshelves_initial_view (eq "grid" site.Params.bookshelves_initial_view)) }}grid-view{{ else }}list-view{{ end }}">
+<div class="bookshelf-books {{ if (and $initial_view (eq "grid" $initial_view)) }}grid-view{{ else }}list-view{{ end }}">
     {{- range index site.Data.bookshelves .key }}
 
 {{- partial "book.html" . }}
@@ -24,7 +26,7 @@
 {{- range $bookshelf, $description := . }}
     
 <p class="bookshelf-description">{{ $description | markdownify }}</p>
-<div class="bookshelf-books {{ if (and site.Params.bookshelves_initial_view (eq "grid" site.Params.bookshelves_initial_view)) }}grid-view{{ else }}list-view{{ end }}">
+<div class="bookshelf-books {{ if (and $initial_view (eq "grid" $initial_view)) }}grid-view{{ else }}list-view{{ end }}">
     {{- range index site.Data.bookshelves $bookshelf }}
 
 {{- partial "book.html" . }}

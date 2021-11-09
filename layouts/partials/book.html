@@ -1,4 +1,4 @@
-{{- $cover_width := site.Params.bookshelves_cover_width | default 100 | int }}
+{{- $cover_width := (site.Data.plugin_bookshelves_data.CoverWidth | default site.Params.bookshelves_cover_width) | default 100 | int }}
 <div class="bookshelf-book">
   <a 
     class="bookshelf-book-link" 

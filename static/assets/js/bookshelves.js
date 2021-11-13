@@ -15,11 +15,16 @@ function gridView() {
 }
 
 var container = document.getElementById("bookshelves-button-container");
-var buttons = container.getElementsByClassName("button");
-for (var i = 0; i < buttons.length; i++) {
-  buttons[i].addEventListener("click", function() {
+
+if (typeof container !== 'undefined') {
+  
+  var buttons = container.getElementsByClassName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener("click", function() {
     var current = document.getElementsByClassName("active");
     current[0].className = current[0].className.replace(" active", "");
-    this.className += " active";
-  });
+      this.className += " active";
+    });
+  }
 }

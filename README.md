@@ -253,21 +253,12 @@ div#bookshelves-button-container > button.button.active {
 
 The file living at `content/bookshelf.md` specifies the front matter for the page.
 
-```json
-{
-  "title": "Bookshelf",
-  "description": "Book collections",
-  "type": "bookshelf",
-  "menu": {
-    "main": {
-      "name": "Bookshelf",
-      "title": "Bookshelf",
-      "identifier": "bookshelf",
-      "url": "/bookshelf/",
-      "weight": 115
-    }
-  }
-}
+```toml
++++
+title = "Bookshelf"
+description = "Book collections"
+type = "bookshelf"
++++
 ```
 
-Leave the `type` alone (as that is what points it to `layouts/bookshelf/single.html`). You can play with the `title` and `description` values. These set the values I would expect your theme to draw from when constructing the page `<head>`. The `menu` creates a menu item to include the page in your navigation. Leave the `url` alone (this is how the link’s target is derived). You can play around with the other values. You can adjust the value of `weight` to slide the menu item up or down your list of navigation items. You can remove the `menu` entry entirely if you do not want the page to show up in your navigation menu.
+Leave the `type` alone (as that is what points it to `layouts/bookshelf/single.html`). You can play with the `title` and `description` values. These set the values I would expect your theme to draw from when constructing the page `<head>`.

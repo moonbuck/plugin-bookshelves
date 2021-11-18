@@ -16,7 +16,7 @@ function gridView() {
 
 var container = document.getElementById("bookshelves-button-container");
 
-if (typeof container !== 'undefined') {
+if (container != null) {
   
   var buttons = container.getElementsByClassName("button");
 

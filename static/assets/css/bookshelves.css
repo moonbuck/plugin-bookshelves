@@ -135,7 +135,7 @@ svg:not(:root).svg-inline--fa{
 .svg-inline--fa{
   display:inline-block;
   display:var(--fa-display,inline-block);
-  height:1em;
+  height:0.95em;
   overflow:visible;
   vertical-align:-.2em
 }

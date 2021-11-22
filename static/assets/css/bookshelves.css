@@ -119,9 +119,9 @@ div#bookshelves-button-container > button.button.active {
 }
   
 /* Button Text */
-/*div#bookshelves-button-container > button.button > span.button-text {
-  display: none;
-}*/
+div#bookshelves-button-container > button.button > span.button-text {
+  /*display: none;*/
+}
 
 /* Font Awesome Icons */
 

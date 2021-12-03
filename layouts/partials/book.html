@@ -5,7 +5,8 @@
     href="https://micro.blog/books/{{ .isbn }}">
     <img 
       class="bookshelf-book-cover"
-      src="https://micro.blog/photos/{{ $cover_width }}x/{{ .cover_url }}"
+      src="{{ .cover_url }}"
+      width="{{ $cover_width }}"
       align="left" />
   </a>
   <div class="bookshelf-book-title-author">

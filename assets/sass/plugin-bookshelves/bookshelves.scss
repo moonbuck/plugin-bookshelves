@@ -4,20 +4,20 @@
 {{ define "rfs-wrap" }}
 
   //Generate a slice with all the property names.
-  {{  := slice "top" "right" "bottom" "left" }}
-  {{  := 
+  {{ $edges := slice "top" "right" "bottom" "left" }}
+  {{ $properties := 
     slice "font-size" "padding" "margin"
-    | append (apply  "printf" "padding-%s" ".") 
-    | append (apply  "printf" "margin-%s" ".") }}
+    | append (apply $edges "printf" "padding-%s" ".") 
+    | append (apply $edges "printf" "margin-%s" ".") }}
 
   //Convert the slice for use within the regular expression.
-  {{  = delimit  "|" }}
+  {{ $properties = delimit $properties "|" }}
 
   // Create the regular expression
-  {{  := printf `(%s):\w*([^;]+)`  }}
+  {{ $pattern := printf `(%s):\w*([^;]+)`  }}
 
   // Replace matches with the appropriate rfs include.
-  {{ replaceRE  `@include $1($2)` . }}
+  {{ replaceRE $pattern `@include $1($2)` . }}
 
 {{ end }}
 

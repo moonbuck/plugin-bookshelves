@@ -1,18 +1,15 @@
 {{- if .HasShortcode "bookshelves" -}}
 
-  {{- /* Resolve the plugin parameter values. */ -}}
   {{- if not (.Scratch.Get "plugin-bookshelves.Parameters") -}}
     {{- partial "plugin-bookshelves/load-parameters.html" . -}}
   {{- end -}}
   
   {{- with (.Scratch.Get "plugin-bookshelves.Parameters") -}}
   
-  {{- if .Config.DebugPrint -}}
-      {{- printf "\n<!--
-  plugin-bookshelves.Parameters:\n%s\n-->" (jsonify .) | safeHTML -}}
+    {{- if .Config.DebugPrint -}}
+      {{- printf "\n<!--plugin-bookshelves.Parameters:\n%s\n-->" (jsonify .) | safeHTML -}}
     {{- end -}}
   
-    {{- /* Insert the plugin version and build time */ -}}
     {{- $time := (time (sub now.Unix 28800)).Format "Jan 2 at 15:04" -}}
     {{- $version := .Config.Version -}}
     {{ printf "\n<!-- Bookshelves v%s (built on %s) -->\n" $version $time | safeHTML }}

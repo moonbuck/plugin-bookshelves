@@ -19,7 +19,7 @@
     "InitialView" "list")
   "Bookshelves" (dict "Registered" (slice))
   "Style" (dict
-  "ToggleWrapperID" "bookshelves-view-toggle"
+    "ToggleWrapperID" "bookshelves-view-toggle"
     "ListViewButtonID" "list-view"
     "GridViewButtonID" "grid-view"
     "ActiveButtonClassName" "active"
@@ -75,7 +75,7 @@
 {{- end -}}
 {{- $Parameters = merge 
                   $Parameters 
-                  dict (slice "Bookshelves" "Resolved") $Bookshelves -}}
+                  (dict (slice "Bookshelves" "Resolved") $Bookshelves) -}}
 
 {{- /********************************************
   Insert the parameter map into the page scratch.

@@ -2,9 +2,9 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   
-  let bookshelves = document.querySelector('{{ .Style.BookshelvesID }}');
-  let listViewButton = document.querySelector('{{ .Style.ListViewButtonID }}');
-  let gridViewButton = document.querySelector('{{ .Style.GridViewButtonID }}');
+  let bookshelves = document.querySelector('#{{ .Style.BookshelvesID }}');
+  let listViewButton = document.querySelector('#{{ .Style.ListViewButtonID }}');
+  let gridViewButton = document.querySelector('#{{ .Style.GridViewButtonID }}');
   
   listViewButton.onclick = () => {
     bookshelves.classList.replace('grid', 'list');

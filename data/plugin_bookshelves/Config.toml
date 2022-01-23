@@ -3,7 +3,7 @@
 
 # Theme version, printed to HTML comment when the plugin loads.
 #
-Version = '7.0.0'
+Version = '7.0.1'
 
 # Whether to print HTML comments for debugging purposes.
 #

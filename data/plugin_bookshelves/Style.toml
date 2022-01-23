@@ -82,17 +82,13 @@ ToggleFontSize = '.8rem'
 # The border color for the view toggle controls.
 # This value is also used as the background color for hovered buttons.
 #
-ToggleBorderColor = 'hsl(223, 26%, 43%)'
-
-# The color applied to the toggle buttons when hovered.
-#
-ButtonHoverColor = '#DDDDDD'
+ToggleAccentColor = 'hsl(223, 26%, 43%)'
 
 # The color to set as the toggle button wrapper's background color.
 # This color is also applied as the foreground color for inactive 
 # buttons.
 #
-ToggleBGColor = '#1E2025'
+ToggleHoverColor = '#1E2025'
 
 # The background color for the toggle buttons.
 # This color is also applied as the foreground color for active buttons.

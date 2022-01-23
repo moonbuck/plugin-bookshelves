@@ -29,17 +29,17 @@
   justify-content: center;
   gap: 0;
   padding: 0;
-  margin: 0;
+  margin: 1rem 0;
   align-content: stretch;
   
   div {
-    border: 0.1em solid {{ .Style.Variables.ToggleBorderColor }};
+    border: 0.1em solid {{ .Style.Variables.ToggleAccentColor }};
     outline: none;
     padding: 0;
     margin:0;
-    background-color: {{ .Style.Variables.ToggleBGColor }};
+    background-color: {{ .Style.Variables.ToggleAccentColor }};
     border-radius: 1em;
-    color: {{ .Style.Variables.ToggleBGColor }};
+    color: {{ .Style.Variables.ToggleAccentColor }};
     @include font-size({{ .Style.Variables.ToggleFontSize }});
     cursor: pointer;
     
@@ -48,7 +48,7 @@
       margin: 0;
       border-width: 0;
       background-color: {{ .Style.Variables.ButtonBGColor }};
-      color: {{ .Style.Variables.ToggleBGColor }};
+      color: {{ .Style.Variables.ToggleAccentColor }};
       height: 100%;
       @include font-size({{ .Style.Variables.ToggleFontSize }});
       
@@ -63,12 +63,12 @@
       }
       
       &:hover {
-        background-color: {{ .Style.Variables.ToggleBorderColor }};
-        color: {{ .Style.Variables.ButtonHoverColor }};
+        background-color: {{ .Style.Variables.ToggleHoverColor }};
+        color: {{ .Style.Variables.ButtonBGColor }};
       }
       
       &.{{ .Style.ActiveButtonClassName }} {
-        background-color: {{ .Style.Variables.ToggleBGColor }};
+        background-color: {{ .Style.Variables.ToggleAccentColor }};
         color: {{ .Style.Variables.ButtonBGColor }};
       }
       
@@ -94,10 +94,17 @@
 
 // Bookshelves
 #{{ .Style.BookshelvesID }} {
+  display: flex;
+  flex-direction: column;
+  @include rfs(1rem, gap); 
   {{ with .Style.Bookshelves }}{{ template "rfs-wrap" . }}{{ end }}
-  
+   
   // Bookshelf
   .{{ .Style.BookshelfClassName }} {
+    display: flex;
+    flex-direction: column;
+    @include rfs(1rem, gap);
+    
     {{ with .Style.Bookshelf }}{{ template "rfs-wrap" . }}{{ end }}
     
     // Display name
@@ -134,24 +141,24 @@
       }
     }
     
-    // Books
-    &.list > div {      
-      margin: 50px;
-      display: flex;
-      flex-direction: column;
-      @include rfs(20px, gap);      
-    }
-    
-    &.grid > div {
-      margin: 50px;
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      @include rfs(20px, gap);     
-      .{{ .Style.BookClassName }} div { display: none; }      
-    }
-    
   } // .{{ .Style.BookshelfClassName }}
+  
+  // Books
+  &.list .{{ .Style.BookshelfClassName }} > div {      
+    margin: 50px;
+    display: flex;
+    flex-direction: column;
+    @include rfs(20px, gap);      
+  }
+  
+  &.grid .{{ .Style.BookshelfClassName }} > div {
+    margin: 50px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    @include rfs(20px, gap);     
+    .{{ .Style.BookClassName }} div { display: none; }      
+  }
   
 } // #{{ .Style.BookshelvesID }}
 

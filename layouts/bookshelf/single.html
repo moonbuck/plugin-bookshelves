@@ -27,8 +27,8 @@
                width="{{ $Parameters.Style.CoverWidth }}" />
         </a>
         <div>
-          <span>{{ .title }}</span>
-          {{ with .author }}<span>by {{.}}</span>{{ end }} 
+          <b><span>{{ .title }}</span></b>
+          {{ with .author }}<i><span>by {{.}}</span></i>{{ end }} 
         </div>         
       </div>      
     {{- end }} {{/* range index site.Data.bookshelves . */}}

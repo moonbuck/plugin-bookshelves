@@ -1,6 +1,8 @@
 # plugin-bookshelves
 A plugin for [Micro.blog](https://micro.blog "Micro.blog") that creates a page displaying multiple bookshelves.
 
+**WARNING** This README is currently out of date. Have a look at the files in the data directory to configure the plugin until I update this README. Additionally, the latest version will require the new Hugo 0.91 API.
+
 ***New in version 4 (and yes … version 3 was like three hours ago)*** Data can be stored as an array of objects under the `bookshelves` key so that the order in which they are displayed can be controlled. Take my file as I had it (found a bit lower down), apply the array format, and it looks like this:
 
 ```json

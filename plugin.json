@@ -1,26 +1,6 @@
 {
-    "version": "6.0.0",
+    "version": "7.0.0",
     "title": "Moondeer's Bookshelves",
     "description": "Creates a page for displaying all your Micro.blog bookshelves.",
-    "includes": [
-        "/assets/css/bookshelves.css",
-        "/assets/js/bookshelves.js"
-      ],
-      "fields": [
-        {
-          "field": "params.bookshelves_data",
-          "label": "Bookshelves Data",
-          "placeholder": ""
-        },
-        {
-          "field": "params.bookshelves_cover_width",
-          "label": "Cover Width (px)",
-          "placeholder": "100"
-        },
-        {
-          "field": "params.bookshelves_initial_view",
-          "label": "Initial View",
-          "placeholder": "list"
-        }
-      ]
+    "includes": [ "plugin-bookshelves/injection.html" ]
     }

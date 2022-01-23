@@ -1,0 +1,100 @@
+# Parameters for styling the bookshelves
+########################################
+
+# The ID to assign to the element wrapping the view toggle controls.
+#
+ToggleWrapperID = 'bookshelves-view-toggle'
+
+# The ID to assign to the list view toggle button.
+#
+ListViewButtonID = 'list-view'
+
+# The ID to assign to the grid view toggle button.
+#
+GridViewButtonID = 'grid-view'
+
+# The class name to assign to the toggle button for the active view.
+#
+ActiveButtonClassName = 'active'
+
+# Whether to display button labels (text) on the toggle buttons.
+#
+ShowButtonLabels = true
+
+# The ID to assign to the element wrapping the bookshelves.
+#
+BookshelvesID = 'bookshelves'
+
+# Sass block to apply to the element wrapping the bookshelves.
+#
+Bookshelves = ''
+
+# The class name to assign to bookshelf wrappers.
+#
+BookshelfClassName = 'bookshelf'
+
+# Sass block to apply to the bookshelf wrappers.
+#
+Bookshelf = ''
+
+# Sass block to apply to the bookshelf display names.
+#
+BookshelfName = ''
+
+# Sass block to apply to the bookshelf descriptions.
+#
+BookshelfDescription = ''
+
+# The class name to assign to book wrappers.
+#
+BookClassName = 'book'
+
+# Sass block to apply to the element wrapping the books.
+#
+Book = ''
+
+# Inline pixel width applied to book covers.
+#
+CoverWidth = 100
+
+# Sass block to apply to the book links.
+#
+BookLink = ''
+
+# Sass block to apply to the book covers.
+#
+BookCover = ''
+
+# Sass block to apply to the book titles.
+#
+BookTitle = ''
+
+# Sass block to apply to the book author names.
+#
+BookAuthor = ''
+
+[Variables]
+
+# The font size used by the view toggle controls.
+#
+ToggleFontSize = '.8rem'
+
+# The border color for the view toggle controls.
+# This value is also used as the background color for hovered buttons.
+#
+ToggleBorderColor = 'hsl(223, 26%, 43%)'
+
+# The color applied to the toggle buttons when hovered.
+#
+ButtonHoverColor = '#DDDDDD'
+
+# The color to set as the toggle button wrapper's background color.
+# This color is also applied as the foreground color for inactive 
+# buttons.
+#
+ToggleBGColor = '#1E2025'
+
+# The background color for the toggle buttons.
+# This color is also applied as the foreground color for active buttons.
+#
+ButtonBGColor = '#FFFFFF'

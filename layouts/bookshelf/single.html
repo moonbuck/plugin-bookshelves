@@ -1,44 +1,39 @@
 {{- define "main" }}
-{{- /* Wrap the content */}}
-<section id="wrapper">
-<article class="h-entry post">
-<section class="e-content post-body">
 
-{{- $initial_view := site.Data.plugin_bookshelves_data.InitialView | default site.Params.bookshelves_initial_view -}}
+{{- if not (.Scratch.Get "plugin-bookshelves.Parameters") -}}
+  {{- partial "plugin-bookshelves/load-parameters.html" . -}}
+{{- end -}}
 
-{{- /* Create the list-grid layout buttons */}}
-<div id="bookshelves-button-container-wrapper"><div id="bookshelves-button-container">
-<button id="list-view" class="button{{ if not (and $initial_view (eq "grid" $initial_view)) }} active{{ end }}" onclick="listView()"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="list" class="svg-inline--fa fa-list fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M80 368H16a16 16 0 0 0-16 16v64a16 16 0 0 0 16 16h64a16 16 0 0 0 16-16v-64a16 16 0 0 0-16-16zm0-320H16A16 16 0 0 0 0 64v64a16 16 0 0 0 16 16h64a16 16 0 0 0 16-16V64a16 16 0 0 0-16-16zm0 160H16a16 16 0 0 0-16 16v64a16 16 0 0 0 16 16h64a16 16 0 0 0 16-16v-64a16 16 0 0 0-16-16zm416 176H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-320H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16V80a16 16 0 0 0-16-16zm0 160H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16z"></path></svg><span class="button-text"> List</span></button> 
-<button id="grid-view" class="button{{ if (and $initial_view (eq "grid" $initial_view)) }} active{{ end }}" onclick="gridView()"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="th" class="svg-inline--fa fa-th fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M149.333 56v80c0 13.255-10.745 24-24 24H24c-13.255 0-24-10.745-24-24V56c0-13.255 10.745-24 24-24h101.333c13.255 0 24 10.745 24 24zm181.334 240v-80c0-13.255-10.745-24-24-24H205.333c-13.255 0-24 10.745-24 24v80c0 13.255 10.745 24 24 24h101.333c13.256 0 24.001-10.745 24.001-24zm32-240v80c0 13.255 10.745 24 24 24H488c13.255 0 24-10.745 24-24V56c0-13.255-10.745-24-24-24H386.667c-13.255 0-24 10.745-24 24zm-32 80V56c0-13.255-10.745-24-24-24H205.333c-13.255 0-24 10.745-24 24v80c0 13.255 10.745 24 24 24h101.333c13.256 0 24.001-10.745 24.001-24zm-205.334 56H24c-13.255 0-24 10.745-24 24v80c0 13.255 10.745 24 24 24h101.333c13.255 0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24zM0 376v80c0 13.255 10.745 24 24 24h101.333c13.255 0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24H24c-13.255 0-24 10.745-24 24zm386.667-56H488c13.255 0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24H386.667c-13.255 0-24 10.745-24 24v80c0 13.255 10.745 24 24 24zm0 160H488c13.255 0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24H386.667c-13.255 0-24 10.745-24 24v80c0 13.255 10.745 24 24 24zM181.333 376v80c0 13.255 10.745 24 24 24h101.333c13.255 0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24H205.333c-13.255 0-24 10.745-24 24z"></path></svg><span class="button-text"> Grid</span></button>
-</div></div>
+{{- $Parameters := .Scratch.Get "plugin-bookshelves.Parameters" -}}
 
-{{- /* Check for bookshelves data */}}
-{{- $bookshelves_data := false }}
-{{- with (site.Data.plugin_bookshelves_data | default site.Data.plugin_bookshelves.bookshelves_data) }}
-{{- $bookshelves_data = . }}
-{{- else }}
-{{- with site.Params.bookshelves_data }}{{ $bookshelves_data = . }}{{ end }}
-{{- end }}
-
-{{- /* Unmarshall the data if we found it in string form */}}
-{{- if (and $bookshelves_data (not ($bookshelves_data | reflect.IsMap))) }}
-{{- with transform.Unmarshal $bookshelves_data }}
-{{- $bookshelves_data = . }}
-{{- end }}
-{{- end }}
-
-{{- with $bookshelves_data }}
-
-{{- partial "bookshelves-from-data.html" . }}
-
-{{- else }}
+{{- if $Parameters.Config.EnableViewToggle -}}
+  {{- partial "plugin-bookshelves/view-toggle.html" . -}}
+{{- end -}}
   
-{{- partial "bookshelves-inferred.html" . }}
+<div id="{{ $Parameters.Style.BookshelvesID }}"
+     class="{{ $Parameters.Config.InitialView }}">
 
-{{- end }}
-
-</section>
-</article>
-</section>
-
-{{- end }}
+{{- range $Parameters.Bookshelves.Resolved -}}
+  
+  <div class="{{ $Parameters.Style.BookshelfClassName }}">  
+    {{ with .DisplayName }}<h2>{{ . | markdownify }}</h2>{{ end }} 
+    {{ with .Description }}<p>{{ . | markdownify }}</p>{{ end }}   
+  {{ with .Key -}}
+    <div>
+    {{ range index site.Data.bookshelves . -}}      
+      <div class="{{ $Parameters.Style.BookClassName }}">
+        <a href="https://micro.blog/books/{{ .isbn }}">
+          <img src="{{ .cover_url }}" 
+               width="{{ $Parameters.Style.CoverWidth }}" />
+        </a>
+        <div>
+          <span>{{ .title }}</span>
+          {{ with .author }}<span>by {{.}}</span>{{ end }} 
+        </div>         
+      </div>      
+    {{- end }} {{/* range index site.Data.bookshelves . */}}
+    </div>
+  {{- end }} {{/* with .Key */}}    
+  </div>
+{{- end -}} {{/* range .Bookshelves.Resolved */}}
+</div>

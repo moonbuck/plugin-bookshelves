@@ -1,0 +1,84 @@
+{{- /********************************************************
+  Resolves theme and plugin data files to build a map of 
+  parameter values and injects this map into the page scratch
+  ***********************************************************/ -}}
+
+{{- /************************************************
+  Initialize variables with default parameter values
+  to ensure every parameter has a map entry. 
+  ***************************************************/ -}}
+
+{{- $Parameters := dict
+  "Config" (dict
+    "Version" ""
+    "DebugPrint" false
+    "Fingerprint" true
+    "SassOutput" "compact"
+    "MinifyScript" false
+    "EnableViewToggle" true
+    "InitialView" "list")
+  "Bookshelves" (dict "Registered" (slice))
+  "Style" (dict
+  "ToggleWrapperID" "bookshelves-view-toggle"
+    "ListViewButtonID" "list-view"
+    "GridViewButtonID" "grid-view"
+    "ActiveButtonClassName" "active"
+    "ShowButtonLabels" true
+    "BookshelvesID" "bookshelves"
+    "Bookshelves" ""
+    "BookshelfClassName" "bookshelf"
+    "Bookshelf" ""
+    "BookshelfName" ""
+    "BookshelfDescription" ""
+    "BookClassName" "book"
+    "Book" ""
+    "CoverWidth" 100
+    "BookLink" ""
+    "BookCover" ""
+    "BookTitle" ""
+    "BookAuthor" ""
+    "Variables" (dict
+      "ToggleFontSize" ".8rem"
+      "ToggleBorderColor" "hsl(223, 26%, 43%)"
+      "ButtonHoverColor" "#DDDDDD"
+      "ToggleBGColor" "#1E2025"
+      "ButtonBGColor" "#FFFFFF"))
+  -}}
+
+{{- /************************************************
+  Override the default parameter values with values
+  found in the plugin data files.
+  ***************************************************/ -}}
+{{- with site.Data.plugin_bookshelves -}}
+{{- $Parameters = merge $Parameters . -}}
+{{- end -}}
+
+{{- /**********************************************
+  Override the default/plugin parameter values with
+  values found in the theme data file.
+  *************************************************/ -}}
+
+{{- with (index site.Data "plugin-bookshelves") -}}
+{{- $Parameters = merge $Parameters . -}}
+{{- end -}}
+
+{{- /**********************************************
+  Resolve bookshelf entries.
+  *************************************************/ -}}
+  
+{{- $Bookshelves := $Parameters.Bookshelves.Registered -}}
+{{- if not $Bookshelves -}}
+{{- range $key, $bookshelf := site.Data.bookshelves -}}
+{{- $entry := dict "Key" $key "DisplayName" $key -}}
+{{- $Bookshelves = $Bookshelves | append $entry -}}
+{{- end -}}
+{{- end -}}
+{{- $Parameters = merge 
+                  $Parameters 
+                  dict (slice "Bookshelves" "Resolved") $Bookshelves -}}
+
+{{- /********************************************
+  Insert the parameter map into the page scratch.
+  ***********************************************/ -}}
+
+{{- .Scratch.Set "plugin-bookshelves.Parameters" $Parameters -}}

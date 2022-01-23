@@ -1,0 +1,35 @@
+# Debug and build related parameters
+####################################
+
+# Theme version, printed to HTML comment when the plugin loads.
+#
+Version = '7.0.0'
+
+# Whether to print HTML comments for debugging purposes.
+#
+DebugPrint = false
+
+# Whether to provide subresource integrity by generating a 
+# base64-encoded cryptographic hash and attaching a .Data.Integrity
+# property containing an integrity string, which is made up of the
+# name of the hash function, one hyphen and the base64-encoded hash sum.
+#
+Fingerprint = true
+
+# Output style for the generated stylesheet.
+# Valid options are nested, expanded, compact and compressed
+#
+SassOutput = 'compact'
+
+# Whether to minify the generated Javascript file.
+#
+MinifyScript = false
+
+# Whether to display list/grid view toggle controls.
+#
+EnableViewToggle = true
+
+# The initial view to display (list or grid).
+# This will be the only view when EnableViewToggle = false.
+#
+InitialView = 'list'

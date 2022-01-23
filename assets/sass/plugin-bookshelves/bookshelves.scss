@@ -1,0 +1,158 @@
+@import "vendor/rfs";
+
+// Template for injecting rfs include directives into a Sass block.
+{{ define "rfs-wrap" }}
+
+  //Generate a slice with all the property names.
+  {{  := slice "top" "right" "bottom" "left" }}
+  {{  := 
+    slice "font-size" "padding" "margin"
+    | append (apply  "printf" "padding-%s" ".") 
+    | append (apply  "printf" "margin-%s" ".") }}
+
+  //Convert the slice for use within the regular expression.
+  {{  = delimit  "|" }}
+
+  // Create the regular expression
+  {{  := printf `(%s):\w*([^;]+)`  }}
+
+  // Replace matches with the appropriate rfs include.
+  {{ replaceRE  `@include $1($2)` . }}
+
+{{ end }}
+
+{{ with .Scratch.Get "plugin-bookshelves.Parameters" }}
+
+// View toggle controls
+#{{ .Style.ToggleWrapperID }} {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  padding: 0;
+  margin: 0;
+  align-content: stretch;
+  
+  div {
+    border: 0.1em solid {{ .Style.ToggleBorderColor }};
+    outline: none;
+    padding: 0;
+    margin:0;
+    background-color: {{ .Style.ToggleBGColor }};
+    border-radius: 1em;
+    color: {{ .Style.ToggleBGColor }};
+    @include font-size({{ .Style.ToggleFontSize }});
+    cursor: pointer;
+    
+    button {
+      padding: 0 1em;
+      margin: 0;
+      border-width: 0;
+      background-color: {{ .Style.ButtonBGColor }};
+      color: {{ .Style.ToggleBGColor }};
+      height: 100%;
+      @include font-size({{ .Style.ToggleFontSize }});
+      
+      &#{{ .Style.ListViewButtonID }} {
+        border-radius: 1em 0 0 1em;
+        padding-right: 1em;
+      }
+      
+      &#{{ .Style.GridViewButtonID }} {
+        border-radius: 0 1em 1em 0;
+        padding-left: 1em;
+      }
+      
+      &:hover {
+        background-color: {{ .Style.ToggleBorderColor }};
+        color: {{ .Style.ButtonHoverColor }};
+      }
+      
+      &.{{ .Style.ActiveButtonClassName }} {
+        background-color: {{ .Style.ToggleBGColor }};
+        color: {{ .Style.ButtonBGColor }};
+      }
+      
+      svg {
+        overflow: visible;
+        -webkit-box-sizing: content-box;
+        box-sizing: content-box;
+        display: inline-block;
+        height: 0.95em;
+        vertical-align: -.2em;
+      } // svg
+      
+      span {
+{{ if .Style.ShowButtonLabels }}
+        padding-left: .2em;
+{{ else }}
+        display: none;
+{{ end }}
+      } // span      
+    } // button
+  } // div
+} // #{{ .Style.ToggleWrapperID }}
+
+// Bookshelves
+#{{ .Style.BookshelvesID }} {
+  {{ with .Style.Bookshelves }}{{ template "rfs-wrap" . }}{{ end }}
+  
+  // Bookshelf
+  .{{ .Style.BookshelfClassName }} {
+    {{ with .Style.Bookshelf }}{{ template "rfs-wrap" . }}{{ end }}
+    
+    // Display name
+    h2 {
+      {{ with .Style.BookshelfName }}{{ template "rfs-wrap" . }}{{ end }}
+    }
+    
+    // Description
+    p {
+      {{ with .Style.BookshelfDescription }}{{ template "rfs-wrap" . }}{{ end }}
+    }
+    
+    // Book
+    .{{ .Style.BookClassName }} {
+      display: flex;
+      align-items: center;
+      @include rfs-value(20px, gap);
+      {{ with .Style.Book }}{{ template "rfs-wrap" . }}{{ end }}
+      
+      a {
+        {{ with .Style.BookLink }}{{ template "rfs-wrap" . }}{{ end }}
+        
+        img {
+          {{ with .Style.BookCover }}{{ template "rfs-wrap" . }}{{ end }}
+        }
+      } // a
+      
+      span:first-child {
+        {{ with .Style.BookTitle }}{{ template "rfs-wrap" . }}{{ end }}
+      }
+      
+      span:nth-child(2) {
+        {{ with .Style.BookAuthor }}{{ template "rfs-wrap" . }}{{ end }}
+      }
+    }
+    
+    // Books
+    &.list > div {      
+      margin: 50px;
+      display: flex;
+      flex-direction: column;
+      @include rfs-value(20px, gap);      
+    }
+    
+    &.grid > div {
+      margin: 50px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      @include rfs-value(20px, gap);     
+      .{{ .Style.BookClassName }} div { display: none; }      
+    }
+    
+  } // .{{ .Style.BookshelfClassName }}
+  
+} // #{{ .Style.BookshelvesID }}
+
+{{ end }}

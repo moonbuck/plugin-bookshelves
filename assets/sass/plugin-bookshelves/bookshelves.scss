@@ -33,24 +33,24 @@
   align-content: stretch;
   
   div {
-    border: 0.1em solid {{ .Style.ToggleBorderColor }};
+    border: 0.1em solid {{ .Style.Variables.ToggleBorderColor }};
     outline: none;
     padding: 0;
     margin:0;
-    background-color: {{ .Style.ToggleBGColor }};
+    background-color: {{ .Style.Variables.ToggleBGColor }};
     border-radius: 1em;
-    color: {{ .Style.ToggleBGColor }};
-    @include font-size({{ .Style.ToggleFontSize }});
+    color: {{ .Style.Variables.ToggleBGColor }};
+    @include font-size({{ .Style.Variables.ToggleFontSize }});
     cursor: pointer;
     
     button {
       padding: 0 1em;
       margin: 0;
       border-width: 0;
-      background-color: {{ .Style.ButtonBGColor }};
-      color: {{ .Style.ToggleBGColor }};
+      background-color: {{ .Style.Variables.ButtonBGColor }};
+      color: {{ .Style.Variables.ToggleBGColor }};
       height: 100%;
-      @include font-size({{ .Style.ToggleFontSize }});
+      @include font-size({{ .Style.Variables.ToggleFontSize }});
       
       &#{{ .Style.ListViewButtonID }} {
         border-radius: 1em 0 0 1em;
@@ -63,13 +63,13 @@
       }
       
       &:hover {
-        background-color: {{ .Style.ToggleBorderColor }};
-        color: {{ .Style.ButtonHoverColor }};
+        background-color: {{ .Style.Variables.ToggleBorderColor }};
+        color: {{ .Style.Variables.ButtonHoverColor }};
       }
       
       &.{{ .Style.ActiveButtonClassName }} {
-        background-color: {{ .Style.ToggleBGColor }};
-        color: {{ .Style.ButtonBGColor }};
+        background-color: {{ .Style.Variables.ToggleBGColor }};
+        color: {{ .Style.Variables.ButtonBGColor }};
       }
       
       svg {

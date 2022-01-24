@@ -96,23 +96,31 @@
 #{{ .Style.BookshelvesID }} {
   display: flex;
   flex-direction: column;
-
+  @include rfs(2rem, gap);
   {{ with .Style.Bookshelves }}{{ template "rfs-wrap" . }}{{ end }}
    
   // Bookshelf
   .{{ .Style.BookshelfClassName }} {
     display: flex;
     flex-direction: column;
-    
+    @include rfs(1.25rem, gap);
     {{ with .Style.Bookshelf }}{{ template "rfs-wrap" . }}{{ end }}
     
+    * + * {
+      padding: 0;
+      margin: 0;
+    }
+  
     // Display name
     h2 {
+      @include font-size(1.25rem);
       {{ with .Style.BookshelfName }}{{ template "rfs-wrap" . }}{{ end }}
     }
     
     // Description
     p {
+      @include font-size(1rem);
+      @include margin-bottom(1em);
       {{ with .Style.BookshelfDescription }}{{ template "rfs-wrap" . }}{{ end }}
     }
     
@@ -120,9 +128,9 @@
     .{{ .Style.BookClassName }} {
       display: flex;
       align-items: center;
-
+      @include rfs(1.25rem, gap);
       {{ with .Style.Book }}{{ template "rfs-wrap" . }}{{ end }}
-      
+            
       a {
         {{ with .Style.BookLink }}{{ template "rfs-wrap" . }}{{ end }}
         
@@ -136,7 +144,6 @@
       div {
         display: flex;
         flex-direction: column;
-        @include rfs(20px, gap);
         
         span:first-child {
           {{ with .Style.BookTitle }}{{ template "rfs-wrap" . }}{{ end }}
@@ -152,18 +159,16 @@
   
   // Books
   &.list .{{ .Style.BookshelfClassName }} > div {      
-    margin: 50px;
     display: flex;
     flex-direction: column;
-     @include rfs(20px, gap);
+    @include rfs(1.25rem, gap);
   }
   
   &.grid .{{ .Style.BookshelfClassName }} > div {
-    margin: 50px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-     @include rfs(20px, gap);
+    @include rfs(1.25rem, gap);
 
     .{{ .Style.BookClassName }} div { display: none; }      
   }

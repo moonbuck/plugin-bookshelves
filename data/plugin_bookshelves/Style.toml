@@ -39,11 +39,11 @@ Bookshelf = ''
 
 # Sass block to apply to the bookshelf display names.
 #
-BookshelfName = 'font-size: 1.25rem;'
+BookshelfName = ''
 
 # Sass block to apply to the bookshelf descriptions.
 #
-BookshelfDescription = 'font-size: 1rem;'
+BookshelfDescription = ''
 
 # The class name to assign to book wrappers.
 #
@@ -77,7 +77,7 @@ BookAuthor = ''
 
 # The font size used by the view toggle controls.
 #
-ToggleFontSize = '.8rem'
+ToggleFontSize = '1rem'
 
 # The border color for the view toggle controls.
 # This value is also used as the background color for hovered buttons.

@@ -103,7 +103,6 @@
   .{{ .Style.BookshelfClassName }} {
     display: flex;
     flex-direction: column;
-    @include rfs(1.25rem, gap);
     {{ with .Style.Bookshelf }}{{ template "rfs-wrap" . }}{{ end }}
     
     * + * {

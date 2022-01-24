@@ -1,4 +1,4 @@
-{{- if .HasShortcode "bookshelves" -}}
+{{- if .HasShortcode "plugin-bookshelves" -}}
 
   {{- if not (.Scratch.Get "plugin-bookshelves.Parameters") -}}
     {{- partial "plugin-bookshelves/load-parameters.html" . -}}

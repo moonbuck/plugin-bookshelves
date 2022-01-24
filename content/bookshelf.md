@@ -10,4 +10,4 @@ identifier = 'bookshelf'
 url = '/bookshelf/'
 weight = 115
 +++
-{{< bookshelves >}}
+{{< plugin-bookshelves >}}

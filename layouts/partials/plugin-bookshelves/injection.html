@@ -17,7 +17,7 @@
     {{- $source_dir := "sass/plugin-bookshelves/" -}}
     {{- $template_name := "bookshelves.scss" -}}
     {{- $source := path.Join $source_dir $template_name -}}
-    {{- $target := path.Join "assets"  -}}
+    {{- $target := path.Join "assets" $source -}}
     {{- $style := resources.Get $source | resources.ExecuteAsTemplate $target $ -}} 
   
     {{- $target = $target | replaceRE "sass|scss" "css" -}}
@@ -27,7 +27,9 @@
     {{- if .Config.Fingerprint }}{{ $style = $style | fingerprint }}{{ end -}}
   
     {{- print "\n" -}}
-  <link rel="stylesheet" href="{{ $style.Permalink }}">
+<link rel="stylesheet" href="{{ $style.Permalink }}"
+{{- if .Config.Fingerprint }} integrity="{{ $style.Data.Integrity }}"{{ end -}}
+>
   
     {{- if .Config.EnableViewToggle -}}
       
@@ -41,7 +43,10 @@
       {{- if .Config.Fingerprint }}{{ $script = $script | fingerprint }}{{ end -}}  
       
       {{- print "\n" -}}
-  <script src="{{ $script.Permalink }}"></script>
+<script defer src="{{ $script.Permalink }}"
+{{- if .Config.Fingerprint }} integrity="{{ $script.Data.Integrity }}"{{ end -}}
+></script>
+
     {{- end -}}
   
   {{- end -}}

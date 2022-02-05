@@ -1,5 +1,5 @@
 {
-  "version": "7.0.3",
+  "version": "7.0.4",
   "title": "Moondeer's Bookshelves",
   "description": "Creates a page for displaying all your Micro.blog bookshelves. Details on configuring plugin parameters may be found <a href='https://moondeer.blog/2022/02/01/pluginbookshelves-a-readme.html'>here</a>",
   "includes": [ "plugin-bookshelves/injection.html" ]

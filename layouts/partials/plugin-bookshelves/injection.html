@@ -7,7 +7,7 @@
   {{- with (.Scratch.Get "plugin-bookshelves.Parameters") -}}
   
     {{- if .Config.DebugPrint -}}
-      {{- printf "\n<!--plugin-bookshelves.Parameters:\n%s\n-->" (jsonify .) | safeHTML -}}
+      {{- printf "\n<!--plugin-bookshelves.Parameters:\n%s\n-->" (. | jsonify (dict "prefix" " " "indent" "  ")) | safeHTML -}}
     {{- end -}}
   
     {{- $time := (time (sub now.Unix 28800)).Format "Jan 2 at 15:04" -}}
